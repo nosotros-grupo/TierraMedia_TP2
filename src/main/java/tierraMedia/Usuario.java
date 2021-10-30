@@ -76,18 +76,18 @@ public class Usuario {
 		return tiempo;
 	}
 	
-	public String getStringAtraccionesCompradas() {
+	public String getListaAtracciones() {
 		String atraccionesCompradas = "";
 		for (Atraccion atrac : itinerario) {
 			atraccionesCompradas += "     ==>" + atrac.stringNombreYduracion() + "\n";
 		}
 		return atraccionesCompradas;
 	}
-
+/*
 	public String getListaAtracciones() {
 		return "" ;
 	}
-
+*/
 	public LinkedList<Atraccion> getItinerario() {
 		return this.itinerario;
 	}

@@ -9,6 +9,7 @@ public class PromocionAxB extends Promocion {
 	public PromocionAxB(List<Atraccion> atracciones, List<Atraccion> atraccionesBonificadas) {
 		super(atracciones);
 		this.atraccionesBonificadas = atraccionesBonificadas;
+		this.atraccionesEnPromo.addAll(atraccionesBonificadas);
 	}
 
 	public TipoAtraccion getTipoAtraccion() {

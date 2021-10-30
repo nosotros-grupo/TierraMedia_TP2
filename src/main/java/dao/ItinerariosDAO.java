@@ -15,14 +15,17 @@ import tierraMedia.Usuario;
 public class ItinerariosDAO {
 	
 	public static TreeMap<Integer, LinkedList<Atraccion>> findAll() throws SQLException {
-		String sql = "SELECT itinerario.id_usuario, itinerario.id_atraccion FROM itinerario";
+		String sql = "SELECT itinerario.id_usuario as id_usuario, atracciones.* FROM itinerario JOIN atracciones ON itinerario.id_atraccion = atracciones.id_atraccion";
 		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement statement = conn.prepareStatement(sql);
 		ResultSet resultados = statement.executeQuery();
 		
 		TreeMap<Integer, LinkedList<Atraccion>> itinerarios = new TreeMap<Integer, LinkedList<Atraccion>>();
 		while (resultados.next()) {
-			itinerarios.put(resultados.getInt(1), lista.add(resultado.getInt(2)) );
+			if (!itinerarios.containsKey(resultados.getInt(1))) {
+				itinerarios.put(resultados.getInt(1), new LinkedList<Atraccion>());
+			}
+			itinerarios.get(resultados.getInt(1)).add(toItinerarioAtraccion(resultados));
 		}
 		conn.close();
 		return itinerarios;

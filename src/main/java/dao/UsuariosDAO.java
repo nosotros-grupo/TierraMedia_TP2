@@ -14,8 +14,10 @@ import tierraMedia.TipoAtraccion;
 
 public class UsuariosDAO {
 	
-	public static void cargarItinerario(Usuario usuario, TreeMap<Integer, Atraccion> itinerarios) {
-			usuario.agregarAtraccion(itinerarios.get(usuario.getId()));
+	public static void cargarItinerario(Usuario usuario, TreeMap<Integer, LinkedList<Atraccion>> itinerarios) {
+			for (Atraccion a : itinerarios.get(usuario.getId())){
+				usuario.agregarAtraccion(a);
+			}
 	}
 	
 	public static LinkedList<Usuario> findAll() throws SQLException {

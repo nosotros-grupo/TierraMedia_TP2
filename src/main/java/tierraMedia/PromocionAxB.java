@@ -17,9 +17,9 @@ public class PromocionAxB extends Promocion {
 
 	public double getCostoDeVisita() {
 		double costoDeVisita = 0;
-		for (int i = 0; i < atraccionesEnPromo.size(); i++) {
-			if (!atraccionesBonificadas.contains(atraccionesEnPromo.get(i))) {
-				costoDeVisita += atraccionesEnPromo.get(i).getCostoDeVisita();
+		for (Atraccion atraccion : atraccionesEnPromo) {
+			if (!atraccionesBonificadas.contains(atraccion)) {
+				costoDeVisita += atraccion.getCostoDeVisita();
 			}
 		}
 		return costoDeVisita;

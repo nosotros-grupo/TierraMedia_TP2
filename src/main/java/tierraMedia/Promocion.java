@@ -18,8 +18,8 @@ public abstract class Promocion implements Producto {
 
 	public double getTiempoPromedioDeVisita() {
 		double tiempoPromedioDeVisita = 0;
-		for (int i = 0; i < atraccionesEnPromo.size(); i++) {
-			tiempoPromedioDeVisita += atraccionesEnPromo.get(i).getTiempoPromedioDeVisita();
+		for (Atraccion atraccion : atraccionesEnPromo) {
+			tiempoPromedioDeVisita += atraccion.getTiempoPromedioDeVisita();
 		}
 		return tiempoPromedioDeVisita;
 	}
@@ -43,8 +43,8 @@ public abstract class Promocion implements Producto {
 	}
 	
 	public void disminuirCupo() {
-		for (int i = 0; i < atraccionesEnPromo.size(); i++) {
-			atraccionesEnPromo.get(i).disminuirCupo();
+		for (Atraccion atraccion : atraccionesEnPromo) {
+			atraccion.disminuirCupo();
 		}
 	}
 	

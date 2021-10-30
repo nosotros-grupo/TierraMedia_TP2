@@ -63,16 +63,16 @@ public class Usuario {
 	
 	public int getCostoTotalDeVisita() {
 		int costo = 0;
-		for (int i = 0; i < itinerario.size(); i++) {
-			costo += itinerario.get(i).getCostoDeVisita();
+		for (Atraccion atraccion : itinerario) {
+			costo += atraccion.getCostoDeVisita();
 		}
 		return costo;
 	}
 	
 	public double getTiempoTotalDeVisita() {
 		int tiempo = 0;
-		for (int i = 0; i < itinerario.size(); i++) {
-			tiempo += itinerario.get(i).getTiempoPromedioDeVisita();
+		for (Atraccion atraccion : itinerario) {
+			tiempo += atraccion.getTiempoPromedioDeVisita();
 		}
 		return tiempo;
 	}

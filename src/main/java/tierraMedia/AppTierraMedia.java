@@ -36,7 +36,7 @@ public class AppTierraMedia {
 		try {
 			cargarItinerarios(itinerarios);
 		} catch (Exception e) {
-			System.out.println("Parece que eres un usuario nuevo.");
+			System.out.println("Inicializando nuevo usuario..");
 		}
 		atracciones.addAll(AtraccionesDAO.findAll());
 		promociones.addAll(PromocionesDAO.findAll(atracciones));
@@ -49,13 +49,13 @@ public class AppTierraMedia {
 		
 		
 		for (Usuario cliente : usuarios) {
+			System.out.print("\n\n       ==          BUENOS  DIAS!!          ==\n\n");
 			System.out.print("\n\n\n\n  == Presiona una tecla para continuar ==       ");
 			sc.nextLine();
 			System.out.print("\n\n");
 			
 			System.out.println("Bienvenido, " + cliente.getName() + "!\n\n");
-			for (int j = 0; j < productos.size(); j++) {
-				Producto producto = productos.get(j);
+			for (Producto producto : productos) {
 				if (esPrimeraOpcion(producto, cliente)) {
 					System.out.println("Desea adquirir " + producto.toString() + "?");
 						System.out.println("Pulse S para si, N para no.");

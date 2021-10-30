@@ -48,25 +48,24 @@ public class AppTierraMedia {
 		Collections.sort(productos);
 		
 		
-		for (int i = 0; i < usuarios.size(); i++) {
-			Usuario usuario = usuarios.get(i);
+		for (Usuario cliente : usuarios) {
 			System.out.print("\n\n\n\n  == Presiona una tecla para continuar ==       ");
 			sc.nextLine();
 			System.out.print("\n\n");
 			
-			System.out.println("Bienvenido, " + usuarios.get(i).getName() + "!\n\n");
+			System.out.println("Bienvenido, " + cliente.getName() + "!\n\n");
 			for (int j = 0; j < productos.size(); j++) {
 				Producto producto = productos.get(j);
-				if (esPrimeraOpcion(producto, usuario)) {
+				if (esPrimeraOpcion(producto, cliente)) {
 					System.out.println("Desea adquirir " + producto.toString() + "?");
 						System.out.println("Pulse S para si, N para no.");
 						String respuesta = sc.nextLine();
 						while(!esRespuestaAceptable(respuesta)) {
-							System.out.println("\n\nNo ha ingresado una respuesta procesable.\nRecuerde S para Si, N para no.");
+							System.out.println("Por favor, sólo presione S para Si, N para no.");
 							respuesta = sc.nextLine();
 						}
 						if (respuesta.toUpperCase().equals("S")) {
-							usuario.compra(producto);
+							cliente.compra(producto);
 							System.out.println("Gracias por su compra!\n");
 							
 						} else if (respuesta.toUpperCase().equals("N")) {
@@ -74,27 +73,26 @@ public class AppTierraMedia {
 						}
 					}
 				}
-			for (int j = 0; j < productos.size(); j++) {
-				Producto producto = productos.get(j);
-				if (esOpcionAlternativa(producto, usuario)) {
+			for (Producto producto : productos) {
+				if (esOpcionAlternativa(producto, cliente)) {
 					System.out.println("Le podemos ofrecer " + producto.toString()
 							+ "\nSabemos que no es de su preferencia.\nPulse S para si, N para no.");
 					String respuesta = sc.nextLine();
 					while(!esRespuestaAceptable(respuesta)) {
-						System.out.println("No ha ingresado una respuesta procesable.\n Recuerde S para Si, N para no.");
+						System.out.println("Por favor, sólo presione S para Si, N para no.");
 						respuesta = sc.nextLine();
 					}
 					if (respuesta.toUpperCase().equals("S")) {
-						usuario.compra(producto);
+						cliente.compra(producto);
 						System.out.println("Gracias por su compra!\n");
 					} else if (respuesta.toUpperCase().equals("N")) {
 						System.out.println("De acuerdo!\n");
 					}
 				}
 			}
-			UsuariosDAO.actualizarUsuarios(usuario);
-			ItinerariosDAO.actualizarItinerarios(usuario);
-			EscritorUsuarios.escribirUsuariosTxt(usuario, i);
+			UsuariosDAO.actualizarUsuarios(cliente);
+			ItinerariosDAO.actualizarItinerarios(cliente);
+			EscritorUsuarios.escribirUsuariosTxt(cliente);
 		}
 		AtraccionesDAO.actualizarAtracciones(atracciones);
 		sc.close();

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class PromocionAxB extends Promocion {
 	private List<Atraccion> atraccionesBonificadas;
+	private String nombre = "AXB";
 
 	public PromocionAxB(List<Atraccion> atracciones, List<Atraccion> atraccionesBonificadas) {
 		super(atracciones);
@@ -21,7 +22,6 @@ public class PromocionAxB extends Promocion {
 				costoDeVisita += atraccionesEnPromo.get(i).getCostoDeVisita();
 			}
 		}
-		;
 		return costoDeVisita;
 	}
 
@@ -32,28 +32,10 @@ public class PromocionAxB extends Promocion {
 
 	@Override
 	public String toString() {
-		// genera el numero de promo
-		double numeroPromo = this.getTiempoPromedioDeVisita() * 13; // Promo Absoluta
-		switch (this.getTipoDeAtraccion()) {
-		case AVENTURA:
-			numeroPromo *= 5;
-			break;
-		case DEGUSTACION:
-			numeroPromo *= 7;
-			break;
-		case PAISAJE:
-			numeroPromo *= 11;
-			break;
-		default:
-			break;
-		}
-
-		// frase a imprimir
-		int numPromoInt = (int) numeroPromo;
-		String numeroPromoTxt = String.format("%04d", numPromoInt);
-		int numCosto = (int) this.getCostoDeVisita();
-		return "\n Promo" + numeroPromoTxt + " ==  Precio Promocional " + numCosto + " monedas  ==  Incluye:  "
-				+ atraccionesEnPromo + "   ===   Y SIN CARGO!!    ESTA ATRACCION PARA QUE DISFRUTE AL MAXIMO!   ===   "
-				+ atraccionesBonificadas;
+		Double costoMonedas = this.getCostoDeVisita();
+		String frase2 = String.format("%1$" + 2 + "s", costoMonedas.toString());
+		return "\n Promo \"" + this.nombre + "\"  << Precio Promocional " + frase2 +" " + " monedas >>   Incluye  "
+				+ atraccionesEnPromo + "\n Y SIN CARGO!!    Esta atracción para que disfrute al máximo:   " 
+				+ atraccionesBonificadas + "\n";
 	}
 }

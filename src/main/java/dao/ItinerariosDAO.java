@@ -31,24 +31,6 @@ public class ItinerariosDAO {
 		return itinerarios;
 	}
 	
-	
-	
-	/*
-	public static TreeMap<Integer, LinkedList<Atraccion>> findAll() throws SQLException {
-		String sql = "SELECT itinerario.id_usuario as id_usuario, atracciones.* FROM itinerario JOIN atracciones ON itinerario.id_atraccion = atracciones.id_atraccion";
-		Connection conn = ConnectionProvider.getConnection();
-		PreparedStatement statement = conn.prepareStatement(sql);
-		ResultSet resultados = statement.executeQuery();
-		
-		TreeMap<Integer, LinkedList<Atraccion>> itinerarios = new TreeMap<Integer, LinkedList<Atraccion>>();
-		while (resultados.next()) {
-			itinerarios.put(resultados.getInt(1), toItinerarioAtraccion(resultados) );
-		}
-		conn.close();
-		return itinerarios;
-	}
-	*/
-	
 	private static Atraccion toItinerarioAtraccion(ResultSet resultados) throws SQLException {
 		return new Atraccion(resultados.getString(2), resultados.getInt(3), resultados.getDouble(4),resultados.getInt(5), TipoAtraccion.valueOf(resultados.getString(6).toUpperCase()), resultados.getInt(7));
 	}

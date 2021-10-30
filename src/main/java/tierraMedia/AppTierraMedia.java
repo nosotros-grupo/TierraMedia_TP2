@@ -36,7 +36,7 @@ public class AppTierraMedia {
 		try {
 			cargarItinerarios(itinerarios);
 		} catch (Exception e) {
-			System.out.println("Inicializando nuevo usuario..");
+			System.out.println("Inicializando nuevos usuarios..");
 		}
 		atracciones.addAll(AtraccionesDAO.findAll());
 		promociones.addAll(PromocionesDAO.findAll(atracciones));
@@ -91,6 +91,7 @@ public class AppTierraMedia {
 				}
 			}
 			UsuariosDAO.actualizarUsuarios(cliente);
+			ItinerariosDAO.prepararItinerarios(cliente);
 			ItinerariosDAO.actualizarItinerarios(cliente);
 			EscritorUsuarios.escribirUsuariosTxt(cliente);
 		}

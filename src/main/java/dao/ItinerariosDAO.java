@@ -35,13 +35,23 @@ public class ItinerariosDAO {
 		return new Atraccion(resultados.getString(2), resultados.getInt(3), resultados.getDouble(4),resultados.getInt(5), TipoAtraccion.valueOf(resultados.getString(6).toUpperCase()), resultados.getInt(7));
 	}
 	
+	public static void prepararItinerarios(Usuario usuario) throws SQLException {
+		Connection conn = ConnectionProvider.getConnection();
+		String sql = "DELETE FROM itinerario WHERE id_usuario = ?";
+		PreparedStatement statement = conn.prepareStatement(sql);
+		statement.setInt(1, usuario.getId());
+		statement.executeUpdate();
+		conn.close();
+	}
+	
+	
 	public static void actualizarItinerarios(Usuario usuario) throws SQLException {
 		Connection conn = ConnectionProvider.getConnection();
 		String sql = "INSERT INTO itinerario (id_usuario, id_atraccion) VALUES (?,?)";
 		PreparedStatement statement = conn.prepareStatement(sql);
 		statement.setInt(1, usuario.getId());
-		for (int i = 0; i < usuario.getItinerario().size(); i++) {
-			statement.setInt(2, usuario.getItinerario().get(i).getId());
+		for (Atraccion a : usuario.getItinerario()) {
+			statement.setInt(2, a.getId());
 			statement.executeUpdate();
 		}
 		conn.close();

@@ -17,11 +17,15 @@ public abstract class Promocion implements Producto {
 	}
 
 	public double getTiempoPromedioDeVisita() {
-		double tiempoPromedioDeVisita = 0;
+		int hora = 0;
+		double minutos = 0;
 		for (Atraccion atraccion : atraccionesEnPromo) {
-			tiempoPromedioDeVisita += atraccion.getTiempoPromedioDeVisita();
+			double tiempoDeVisita = atraccion.getTiempoPromedioDeVisita();
+			hora += (int) tiempoDeVisita;
+			minutos += (10 * atraccion.getTiempoPromedioDeVisita() - 10 * hora)/10;
 		}
-		return tiempoPromedioDeVisita;
+		hora = hora * 60;
+		return (hora + minutos) / 60;
 	}
 
 	public boolean esPromocion() {

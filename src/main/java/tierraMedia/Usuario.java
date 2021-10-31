@@ -83,11 +83,7 @@ public class Usuario {
 		}
 		return atraccionesCompradas;
 	}
-/*
-	public String getListaAtracciones() {
-		return "" ;
-	}
-*/
+
 	public LinkedList<Atraccion> getItinerario() {
 		return this.itinerario;
 	}

@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class LectorAtracciones {
 	
+	//metodo para leer atracciones de un archivo csv o in, obsoleto por el uso de bdd.
 	public List<Atraccion> leerAtracciones(String archivo) {
 		List<Atraccion> atracciones = new ArrayList<Atraccion>();
 		

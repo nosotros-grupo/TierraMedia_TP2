@@ -1,5 +1,7 @@
 # TierraMedia Entrega2
 
+![](https://wallpaperaccess.com/full/838293.jpg "Rivendell")
+
 ### Integrantes del Grupo
 - Miguel
 - Pablo

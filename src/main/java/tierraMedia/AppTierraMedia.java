@@ -30,7 +30,7 @@ public class AppTierraMedia {
 		TreeMap<Integer, LinkedList<Atraccion>> itinerarios = ItinerariosDAO.findAll();
 		
 		Scanner sc = new Scanner(System.in);
-
+		
 		// se traen los datos a las listas desde la DB
 		usuarios.addAll(UsuariosDAO.findAll());
 		try {
@@ -54,7 +54,7 @@ public class AppTierraMedia {
 			sc.nextLine();
 			System.out.print("\n\n");
 			
-			System.out.println("Bienvenido, " + cliente.getName() + "!\n\n");
+			System.out.println("Bienvenida, " + cliente.getName() + "!\n\n");
 			for (Producto producto : productos) {
 				if (esPrimeraOpcion(producto, cliente)) {
 					System.out.println("Desea adquirir " + producto.toString() + "?");

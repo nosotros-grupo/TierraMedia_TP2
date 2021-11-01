@@ -34,6 +34,22 @@ public class UsuariosDAO {
 		return usuarios;
 	
 	}
+	
+	public static void IngresarNuevoUsuario(LinkedList<String> usuarioNuevo) throws SQLException {
+		String sql = "INSERT INTO usuarios (presupuesto, tiempoDisponible, tipoDeAtraccion, Nombre) VALUES (?,?,?,?)";
+		Connection conn = ConnectionProvider.getConnection();
+		PreparedStatement statement = conn.prepareStatement(sql);
+		statement.setInt(1, Integer.valueOf(usuarioNuevo.get(0)));
+		statement.setDouble(2, Double.valueOf(usuarioNuevo.get(1)));
+		statement.setString(3, usuarioNuevo.get(2).toUpperCase());
+		statement.setString(4, usuarioNuevo.get(3));
+		statement.executeUpdate();
+		
+		conn.close();
+	}
+	
+	
+	
 	private static Usuario toUser(ResultSet resultados) throws SQLException {
 		return new Usuario(resultados.getInt(1), resultados.getDouble(2), TipoAtraccion.valueOf(resultados.getString(3)), resultados.getString(4), resultados.getInt(5));
 	}

@@ -3,11 +3,11 @@
 ![](https://wallpaperaccess.com/full/838293.jpg "Rivendell")
 
 ### Integrantes del Grupo
-- Miguel
-- Pablo
-- Belen
-- Diego
-- Ezequiel
+- Miguel Colombos
+- Pablo Estevez
+- Belen Rodriguez
+- Diego Crisaldo
+- Ezequiel David
 
 
 ## Funcionalidades presentes en el programa
